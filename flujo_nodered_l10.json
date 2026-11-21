@@ -1,0 +1,575 @@
+[
+    {
+        "id": "tabL9",
+        "type": "tab",
+        "label": "L9 · ESP32 PLC por MQTT",
+        "disabled": false,
+        "info": "Flujo de partida: lee las entradas que publica el ESP32 PLC y deja un interruptor para su salida Q0.0. Cámbialo y despliega."
+    },
+    {
+        "id": "broker",
+        "type": "mqtt-broker",
+        "name": "Broker del laboratorio",
+        "broker": "192.168.1.50",
+        "port": "1883",
+        "clientid": "nodered-alumno",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true
+    },
+    {
+        "id": "tabUI",
+        "type": "ui_tab",
+        "name": "Tablero DEET",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "grupoUI",
+        "type": "ui_group",
+        "name": "ESP32 PLC",
+        "tab": "tabUI",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "4e780bd5649a3a73",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "94657fc4505c471b",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.1.50",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "d6aa99328df2f1d8",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "12e8dae0642d2710",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#fcfcfd",
+            "primary": "#0d74ce",
+            "bgPage": "#f9f9fb",
+            "groupBg": "#ffffff",
+            "groupOutline": "#d9d9e0"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "bfab0c85c50d408b",
+        "type": "ui-page",
+        "name": "Page 1",
+        "ui": "d6aa99328df2f1d8",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "12e8dae0642d2710",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": 0,
+                "cols": 3
+            },
+            {
+                "name": "Tablet",
+                "px": 576,
+                "cols": 6
+            },
+            {
+                "name": "Small Desktop",
+                "px": 768,
+                "cols": 9
+            },
+            {
+                "name": "Desktop",
+                "px": 1024,
+                "cols": 12
+            }
+        ],
+        "tabs": [],
+        "order": 2,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "c2c34b4fb46feb98",
+        "type": "ui-group",
+        "name": "Group 1",
+        "page": "bfab0c85c50d408b",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": true,
+        "disabled": false,
+        "groupType": "default",
+        "keepLoaded": false,
+        "tab": ""
+    },
+    {
+        "id": "1102b9516fd2ee3a",
+        "type": "ui-page",
+        "name": "Planta",
+        "ui": "d6aa99328df2f1d8",
+        "path": "/planta",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "default",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "tabs": [],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "8d461a10e1dc7542",
+        "type": "ui-group",
+        "name": "LoRaWAN",
+        "page": "1102b9516fd2ee3a",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default",
+        "keepLoaded": false,
+        "tab": ""
+    },
+    {
+        "id": "entradas",
+        "type": "mqtt in",
+        "z": "tabL9",
+        "name": "entradas del ESP32",
+        "topic": "tablero1/alumno/entradas",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "broker",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 100,
+        "wires": [
+            [
+                "verEntradas",
+                "depurar"
+            ]
+        ]
+    },
+    {
+        "id": "verEntradas",
+        "type": "ui_text",
+        "z": "tabL9",
+        "group": "grupoUI",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Entradas",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 400,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "depurar",
+        "type": "debug",
+        "z": "tabL9",
+        "name": "msg",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 390,
+        "y": 130,
+        "wires": []
+    },
+    {
+        "id": "interruptor",
+        "type": "ui_switch",
+        "z": "tabL9",
+        "name": "",
+        "label": "Q0.0",
+        "group": "grupoUI",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": "false",
+        "topic": "q00",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "1",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "0",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "x": 150,
+        "y": 200,
+        "wires": [
+            [
+                "salidaQ00"
+            ]
+        ]
+    },
+    {
+        "id": "salidaQ00",
+        "type": "mqtt out",
+        "z": "tabL9",
+        "name": "orden a Q0.0",
+        "topic": "tablero1/alumno/q00",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "broker",
+        "x": 390,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "1246618b9c035db7",
+        "type": "mqtt in",
+        "z": "tabL9",
+        "name": "",
+        "topic": "application/+/device/+/event/up",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "94657fc4505c471b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 340,
+        "wires": [
+            [
+                "53360c503d46d0e3"
+            ]
+        ]
+    },
+    {
+        "id": "53360c503d46d0e3",
+        "type": "function",
+        "z": "tabL9",
+        "name": "function 1",
+        "func": "// Practica L10 - Listado L10.6: nodo function de Node-RED detras de un \"mqtt in\" (salida:\n// objeto JSON) suscrito a  application/+/device/+/event/up  en el broker del laboratorio,\n// 192.168.1.50. Con UNA salida hay que devolver [[m1, m2, m3, m4]] (los cuatro, en\n// secuencia, por la misma salida) hacia un \"mqtt out\" sin tema fijo; el [m1, ..., m4] del\n// listado de la guia reparte un mensaje por salida y exige configurar 4 salidas.\n// Salida: los mismos topicos que ya consume el tablero de L9, mas la calidad del enlace.\nlet up = msg.payload;\nlet d = up.uplink_message ? up.uplink_message.decoded_payload    // TTS\n                          : up.object;                           // ChirpStack\nif (!d) { return null; }\nlet meta = up.uplink_message ? up.uplink_message.rx_metadata[0] : up.rxInfo[0];\n\nreturn [[\n  { topic: \"planta/lorawan/temperatura\", payload: d.temperatura },\n  { topic: \"planta/lorawan/nivel\", payload: d.nivel },\n  { topic: \"planta/lorawan/alarma\",\n    payload: (d.alarma_temp || d.alarma_nivel) ? 1 : 0 },\n  { topic: \"planta/lorawan/calidad\",\n    payload: { rssi: meta.rssi, snr: meta.snr, medio: \"LoRaWAN\", ts_nodo: d.ts_iso } }\n]];\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 340,
+        "wires": [
+            [
+                "ca16284bb6bbe4ab",
+                "b09bdd5887ea74c1"
+            ]
+        ]
+    },
+    {
+        "id": "ca16284bb6bbe4ab",
+        "type": "mqtt out",
+        "z": "tabL9",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "94657fc4505c471b",
+        "x": 570,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "b09bdd5887ea74c1",
+        "type": "debug",
+        "z": "tabL9",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "3711eed8b157a7f4",
+        "type": "mqtt in",
+        "z": "tabL9",
+        "name": "",
+        "topic": "planta/lorawan/temperatura",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "broker",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 520,
+        "wires": [
+            [
+                "81f8e8c5c8f3059e"
+            ]
+        ]
+    },
+    {
+        "id": "81f8e8c5c8f3059e",
+        "type": "ui-chart",
+        "z": "tabL9",
+        "group": "8d461a10e1dc7542",
+        "name": "",
+        "label": "Temperatura LoRaWAN (°C)",
+        "order": 1,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 6,
+        "height": 8,
+        "className": "",
+        "interpolation": "linear",
+        "x": 440,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    }
+]

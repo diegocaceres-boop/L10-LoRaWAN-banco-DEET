@@ -1,0 +1,3 @@
+# Credenciales LoRaWAN: nunca al repositorio
+credenciales.h
+*.secret
