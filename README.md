@@ -21,7 +21,7 @@ Lleva por LoRaWAN el registro Modbus que el potenciómetro deja en un Controllin
 | Reg. | Fuente | Contenido | Escala |
 |---|---|---|---|
 | [0] | A0, P1 | Temperatura | 0–1023 → 0–100 °C |
-| [1]–[7] | — | Reservados (mapa L6) | — |
+| [1]–[7] | — | Reservados | — |
 | [8] | A1, P2 | Nivel | 0–1023 → 0–100 % |
 | [9] | Estado | b0: T fuera de [5, 30] °C · b1: nivel fuera de [20, 90] % | 0/1 |
 
